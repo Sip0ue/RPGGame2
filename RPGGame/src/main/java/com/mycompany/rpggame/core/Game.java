@@ -21,7 +21,7 @@ public class Game {
 
     public boolean hasNextBattle() {
         if (currentBattle.isWon()) {
-            return currentIndex < enemies.length -1;
+            return currentIndex < enemies.length - 1;
         }
         return false;
     }

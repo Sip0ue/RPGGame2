@@ -15,7 +15,12 @@ public class Battle {
             return "The battle is over\n";
         }
         int damage = hero.attack(enemy);
-        String log = hero.getName() + " attacks for " + damage + " damage\n";
+        String log = "";
+        if (damage > Math.max(1, hero.getAttackPoint() 
+                - enemy.getDefensePoint())) {
+            log += hero.getName() + " crits!\n";
+        }
+        log += hero.getName() + " attacks for " + damage + " damage\n";
         log += endTurn();
         return log;
     }
