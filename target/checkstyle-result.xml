@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="13.7.0">
+<file name="C:\Users\BG52483290\OneDrive - Conduent\Documents\NetBeansProjects\RPGGame\src\main\java\com\mycompany\rpggame\core\Game.java">
+<error line="24" column="50" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+</checkstyle>
