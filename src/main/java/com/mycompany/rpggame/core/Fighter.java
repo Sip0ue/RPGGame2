@@ -20,9 +20,10 @@ public class Fighter {
     // Other attributes
     private String name;
     private int level;
+    private int type;
     
     public Fighter(int hp, int maxHp, String name, int attackPoint, 
-        int defensePoint, int level, float critDmg, float critRate) {
+        int defensePoint, int level, float critDmg, float critRate, int type) {
         this.hp = hp;
         this.maxHp = maxHp;
         this.name = name;
@@ -32,6 +33,7 @@ public class Fighter {
         this.healsLeft = MAX_HEAL;
         this.critDmg = critDmg;
         this.critRate = critRate;
+        this.type = type;
     }
     
     public boolean isAlive() {
@@ -40,7 +42,9 @@ public class Fighter {
 
     // Deal damages to an ennemy
     public int attack(Fighter target) {
-        float damage = Math.max(1, attackPoint * calcCrit() 
+        float damage = Math.max(1, attackPoint 
+                * calcTypeMult(target.getType()) 
+                * calcCrit() 
                 - target.defensePoint);
         target.takeDamage((int) damage);
         return (int) damage;
@@ -50,6 +54,7 @@ public class Fighter {
         float critNeed = RANDOM.nextFloat();
         return (critRate >= critNeed);
     }
+    
     public float calcCrit() {
         boolean isCrit = isCrit(critRate);
         if (isCrit) {
@@ -57,6 +62,11 @@ public class Fighter {
         } else {
             return 1;
         }
+    }
+    
+    public float calcTypeMult(int enemyType) {
+        System.out.println((float) Types.weakList[enemyType][type]);
+        return (float) Types.weakList[enemyType][type];
     }
 
     // Taking damages, hp can't go under 0
@@ -134,6 +144,11 @@ public class Fighter {
         this.level = level;
     }
 
-
-
+    public int getType() {
+        return type;
+    }
+    
+    public void setType(int type) {
+        this.type = type;
+    }
 }

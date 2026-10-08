@@ -9,5 +9,6 @@ com\mycompany\rpggame\RPGGame.class
 com\mycompany\rpggame\core\Beast.class
 com\mycompany\rpggame\core\FinalBoss.class
 com\mycompany\rpggame\core\Hero.class
+com\mycompany\rpggame\core\Types.class
 com\mycompany\rpggame\core\Warrior.class
 com\mycompany\rpggame\core\Game.class

@@ -8,9 +8,10 @@ public abstract class Hero extends Fighter {
     private int xpBar;
     
     public Hero(int hp, int maxHp, String name, int attackPoint,
-            int defensePoint, int level, float critDmg, float critRate) {
+            int defensePoint, int level, float critDmg, float critRate, 
+            int type) {
         super(hp, maxHp, name, attackPoint, defensePoint, level, critDmg, 
-                critRate);
+                critRate, type);
         this.ultimatesLeft = MAX_ULTIMATE;
         this.xpBar = 0;
     }

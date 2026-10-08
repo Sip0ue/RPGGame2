@@ -10,8 +10,8 @@ public class FinalBoss extends Ennemy {
     // We need it for the choices he did
     private static final Random RANDOM = new Random();
 
-    public FinalBoss(String name, int level) {
-        super(name, level);
+    public FinalBoss(String name, int level, int type) {
+        super(name, level, type);
         this.ultimatesLeft = MAX_ULTIMATE;
     }
 

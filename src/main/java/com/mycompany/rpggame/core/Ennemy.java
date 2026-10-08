@@ -1,10 +1,10 @@
 package com.mycompany.rpggame.core;
 
 public class Ennemy extends Fighter {
-    public Ennemy(String name, int level) {
+    public Ennemy(String name, int level, int type) {
         // Statistics of an Ennemy depending of his level
         super(18 + 6 * level, 18 + 6 * level, name, 4 + 2 * level, 2 + level, 
-                level, (float) 0.5, (float) 0.05);
+                level, (float) 0.5, (float) 0.05, type);
     }
 
     // The decision an Ennemy takes depending on his hp

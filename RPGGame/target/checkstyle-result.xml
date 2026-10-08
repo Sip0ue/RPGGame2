@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="13.7.0">
+<file name="C:\Users\leviv\Documents\GitHub\RPGGame2\RPGGame\src\main\java\com\mycompany\rpggame\core\Types.java">
+<error line="5" column="36" severity="warning" message="Rename constant &apos;weakList&apos; according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.naming.ConstantNameCheck"/>
+<error line="6" column="11" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="6" column="13" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="6" column="15" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="7" column="11" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="7" column="13" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="7" column="17" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="8" column="11" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="8" column="13" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="8" column="15" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="9" column="11" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="9" column="15" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="9" column="17" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+</file>
+</checkstyle>
