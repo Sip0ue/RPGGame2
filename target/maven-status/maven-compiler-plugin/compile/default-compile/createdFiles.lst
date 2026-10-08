@@ -1,0 +1,14 @@
+com\mycompany\rpggame\core\Battle.class
+com\mycompany\rpggame\core\Ennemy.class
+com\mycompany\rpggame\ui\BattlePanel.class
+com\mycompany\rpggame\ui\GameWindow.class
+com\mycompany\rpggame\core\Archer.class
+com\mycompany\rpggame\core\Fighter.class
+com\mycompany\rpggame\RPGGame$1.class
+com\mycompany\rpggame\RPGGame.class
+com\mycompany\rpggame\core\Beast.class
+com\mycompany\rpggame\core\FinalBoss.class
+com\mycompany\rpggame\core\Hero.class
+com\mycompany\rpggame\core\Types.class
+com\mycompany\rpggame\core\Warrior.class
+com\mycompany\rpggame\core\Game.class

@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="13.7.0">
+<file name="C:\Users\leviv\Documents\GitHub\RPGGame2\src\main\java\com\mycompany\rpggame\core\Battle.java">
+<error line="57" column="5" severity="warning" message="This method is becoming too complex. Simplify it to comply with the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.metrics.CyclomaticComplexityCheck"/>
+</file>
 </checkstyle>
