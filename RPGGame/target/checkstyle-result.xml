@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<checkstyle version="13.7.0">
-<file name="C:\Users\leviv\Documents\GitHub\RPGGame2\RPGGame\src\main\java\com\mycompany\rpggame\core\Ennemy.java">
-</file>
-<file name="C:\Users\leviv\Documents\GitHub\RPGGame2\RPGGame\src\main\java\com\mycompany\rpggame\core\Fighter.java">
-<error line="53" column="5" severity="warning" message="&apos;METHOD_DEF&apos; should be separated from previous line." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
-<error line="53" column="5" severity="warning" message="Add empty lines according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
-</file>
-</checkstyle>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="13.7.0">
+<file name="C:\Users\BG52483290\OneDrive - Conduent\Documents\NetBeansProjects\RPGGame\src\main\java\com\mycompany\rpggame\core\Battle.java">
+<error line="52" column="5" severity="warning" message="This method is becoming too complex. Simplify it to comply with the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.metrics.CyclomaticComplexityCheck"/>
+<error line="61" column="79" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="62" column="44" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\BG52483290\OneDrive - Conduent\Documents\NetBeansProjects\RPGGame\src\main\java\com\mycompany\rpggame\core\Game.java">
+<error line="29" column="50" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="C:\Users\BG52483290\OneDrive - Conduent\Documents\NetBeansProjects\RPGGame\src\main\java\com\mycompany\rpggame\core\Hero.java">
+<error line="17" column="5" severity="warning" message="&apos;METHOD_DEF&apos; doit être séparé de la ligne précédente." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="41" column="28" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="63" column="5" severity="warning" message="&apos;METHOD_DEF&apos; doit être séparé de la ligne précédente." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="63" column="5" severity="warning" message="Add empty lines according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="66" column="5" severity="warning" message="&apos;METHOD_DEF&apos; doit être séparé de la ligne précédente." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="66" column="5" severity="warning" message="Add empty lines according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+<error line="66" column="36" severity="warning" message="Use spaces according to the 2IP90 coding standard." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+</checkstyle>
