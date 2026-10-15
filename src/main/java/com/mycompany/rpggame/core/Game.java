@@ -19,19 +19,34 @@ public class Game {
         this.currentBattle = new Battle(hero, enemies[0]);
     }
 
+    // The player can fight the same enemy again after a win (not the boss)
+    public boolean canReplayBattle() {
+        return currentBattle.isWon() && !isBossFight();
+    }
+
     public boolean hasNextBattle() {
         if (currentBattle.isWon()) {
-            return currentIndex < enemies.length -1;
+            return currentIndex < enemies.length - 1;
         }
         return false;
     }
+    
+    // Fight a fresh copy of the current enemy to earn more xp
+    public void replayBattle() {
+        if (!canReplayBattle()) {
+            return;
+        }
+        hero.setHp(hero.getMaxHp());
+        Ennemy previous = enemies[currentIndex];
+        currentBattle = new Battle(hero, new Ennemy(previous.getName(), previous.getLevel()));
+    }
+
 
     // Launch the next battle if there is
     public void nextBattle() {
         if (!hasNextBattle()) {
             return;
         }
-        hero.levelUp();
         hero.setHp(hero.getMaxHp());
         currentIndex += 1;
         currentBattle = new Battle(hero, enemies[currentIndex]);

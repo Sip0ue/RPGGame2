@@ -15,7 +15,12 @@ public class Battle {
             return "The battle is over\n";
         }
         int damage = hero.attack(enemy);
-        String log = hero.getName() + " attacks for " + damage + " damage\n";
+        String log = "";
+        if (damage > Math.max(1, hero.getAttackPoint() 
+                - enemy.getDefensePoint())) {
+            log += hero.getName() + " crits!\n";
+        }
+        log += hero.getName() + " attacks for " + damage + " damage\n";
         log += endTurn();
         return log;
     }
@@ -56,7 +61,17 @@ public class Battle {
         }
 
         if (isWon()) {
+            // Xp Gain System
             log += enemy.getName() + " is defeated, you win!\n";
+            int xpWon = (Math.max(0, enemy.getLevel() - hero.getLevel()  + 2))*25;
+            if (enemy instanceof FinalBoss){
+                xpWon += 50;
+            }
+            log += hero.getName() + " gains " + xpWon + " XP\n";
+            if (hero.gainXp(xpWon)) {
+                log += hero.getName() + " reaches level " + hero.getLevel() + "!\n";
+            }
+
         } else if (isLost()) {
             log += hero.getName() + " is defeated, game over\n";
         }

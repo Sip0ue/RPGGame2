@@ -5,13 +5,33 @@ public abstract class Hero extends Fighter {
     // About ultimate attack
     public static final int MAX_ULTIMATE = 3;
     private int ultimatesLeft;
+    private int xpBar;
     
     public Hero(int hp, int maxHp, String name, int attackPoint,
-            int defensePoint, int level) {
-        super(hp, maxHp, name, attackPoint, defensePoint, level);
+            int defensePoint, int level, float critDmg, float critRate) {
+        super(hp, maxHp, name, attackPoint, defensePoint, level, critDmg, 
+                critRate);
         this.ultimatesLeft = MAX_ULTIMATE;
+        this.xpBar = 0;
+    }
+    // XP needed to reach the next level
+    public int getXpToNextLevel() {
+        return 50 * getLevel();
     }
     
+    // Add xp and level up as many times as needed, return true if level up
+    public boolean gainXp(int amount) {
+        boolean leveledUp = false;
+        xpBar += amount;
+        while (xpBar >= getXpToNextLevel()) {
+            xpBar -= getXpToNextLevel();
+            levelUp();
+            leveledUp = true;
+        }
+        return leveledUp;
+    }
+
+
     // Up the statistics when a character level up (numbers have been modified
     //to have a balance game
     public void levelUp() {
@@ -19,7 +39,7 @@ public abstract class Hero extends Fighter {
         setHp(getHp() + 4);
         setAttackPoint(getAttackPoint() + 2);
         setDefensePoint(getDefensePoint() + 1);
-        setLevel(getLevel() + 1);
+        setLevel(getLevel()+1);
     }    
     
     public boolean canUseSpecialAttack() {
@@ -40,5 +60,11 @@ public abstract class Hero extends Fighter {
     
     public int getUltimatesLeft() {
         return ultimatesLeft;
+    }
+    public int getXpBar() {
+        return xpBar;
+    }
+    public void setXpBar(int xpBar){
+        this.xpBar = xpBar;
     }
 }

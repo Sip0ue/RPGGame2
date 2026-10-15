@@ -1,6 +1,9 @@
 package com.mycompany.rpggame.core;
 
+import java.util.Random;
+
 public class Fighter {
+    private static final Random RANDOM = new Random();
     // About healing
     public static final int MAX_HEAL = 3;
     private int healsLeft;
@@ -11,13 +14,15 @@ public class Fighter {
     private int maxHp;
     private int attackPoint;
     private int defensePoint;
+    private float critDmg;
+    private float critRate;
     
     // Other attributes
     private String name;
     private int level;
     
-    public Fighter(int hp, int maxHp, String name, int attackPoint,
-            int defensePoint, int level) {
+    public Fighter(int hp, int maxHp, String name, int attackPoint, 
+        int defensePoint, int level, float critDmg, float critRate) {
         this.hp = hp;
         this.maxHp = maxHp;
         this.name = name;
@@ -25,6 +30,8 @@ public class Fighter {
         this.defensePoint = defensePoint;
         this.level = level;
         this.healsLeft = MAX_HEAL;
+        this.critDmg = critDmg;
+        this.critRate = critRate;
     }
     
     public boolean isAlive() {
@@ -33,9 +40,23 @@ public class Fighter {
 
     // Deal damages to an ennemy
     public int attack(Fighter target) {
-        int damage = Math.max(1, attackPoint - target.defensePoint);
-        target.takeDamage(damage);
-        return damage;
+        float damage = Math.max(1, attackPoint * calcCrit() 
+                - target.defensePoint);
+        target.takeDamage((int) damage);
+        return (int) damage;
+    }
+    
+    private boolean isCrit(float critRate) {
+        float critNeed = RANDOM.nextFloat();
+        return (critRate >= critNeed);
+    }
+    public float calcCrit() {
+        boolean isCrit = isCrit(critRate);
+        if (isCrit) {
+            return (1 + critDmg);
+        } else {
+            return 1;
+        }
     }
 
     // Taking damages, hp can't go under 0
