@@ -14,7 +14,7 @@ public class GameWindow extends JFrame {
     public GameWindow() {
         super("BenLeViRPG");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 400);
+        setSize(800, 600);
         setLocationRelativeTo(null);
         showHeroSelection();
         setVisible(true);
