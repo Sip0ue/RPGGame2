@@ -15,7 +15,7 @@ public class Fighter {
     private int attackPoint;
     private int defensePoint;
     private float critDmg;
-    private float critRate;
+    float critRate;
     
     // Other attributes
     private String name;
@@ -93,7 +93,10 @@ public class Fighter {
     public int getHealsLeft() {
         return healsLeft;
     }
-   
+    
+    public void setHealsLeft(int healsLeft) {
+        this.healsLeft = Math.min(healsLeft, MAX_HEAL);
+    }
 
     public int getHp() {
         return hp;

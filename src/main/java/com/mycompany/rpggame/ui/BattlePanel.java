@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class BattlePanel extends JPanel {
     // All the elements that are present in the battle screen
-    private final GameWindow window;
+    private final SelectionWindow selectionWindow;
     private final Game game;
     private final JLabel heroLabel = new JLabel();
     private final JLabel enemyLabel = new JLabel();
@@ -20,12 +20,13 @@ public class BattlePanel extends JPanel {
     private final JButton nextButton = new JButton("Next battle");
     private final JButton playAgainButton = new JButton("Play again");
     private final JButton restartButton = new JButton("Restart");
+    private final JButton shopButton = new JButton("Shop");
     private final JProgressBar xpProgressBar = new JProgressBar();
 
-    public BattlePanel(GameWindow window, Game game) {
+    public BattlePanel(SelectionWindow selectionWindow, Game game) {
         // Init the screen
         super(new BorderLayout(10, 10));
-        this.window = window;
+        this.selectionWindow = selectionWindow;
         this.game = game;
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -55,6 +56,7 @@ public class BattlePanel extends JPanel {
         buttonPanel.add(nextButton);
         buttonPanel.add(playAgainButton);
         buttonPanel.add(restartButton);
+        buttonPanel.add(shopButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
         // Couple the button with his action
@@ -63,8 +65,8 @@ public class BattlePanel extends JPanel {
         healButton.addActionListener(e -> showLog(getBattle().heal()));
         nextButton.addActionListener(e -> startNextBattle());
         playAgainButton.addActionListener(e -> startReplayBattle());
-        restartButton.addActionListener(e -> window.showHeroSelection());
-
+        restartButton.addActionListener(e -> selectionWindow.showHeroSelection());
+        shopButton.addActionListener(e -> selectionWindow.showShop());
         announceBattle();
         refresh();
     }
@@ -75,7 +77,8 @@ public class BattlePanel extends JPanel {
 
     // Announce the next battle (if it's a boss or not)
     private void announceBattle() {
-        String title = "--- Battle " + game.getBattleNumber() + " / " + game.getTotalBattles();
+        String title = "--- Battle " + game.getBattleNumber() + " / " 
+                + game.getTotalBattles();
         if (game.isBossFight()) {
             title += " : FINAL BOSS";
         }
@@ -109,7 +112,7 @@ public class BattlePanel extends JPanel {
     }
 
     // Refresh the state of the game after each action
-    private void refresh() {
+    public void refresh() {
         // update the state of the characters
         Battle battle = getBattle();
         Hero hero = battle.getHero();
@@ -119,7 +122,8 @@ public class BattlePanel extends JPanel {
         // update the xp bar
         xpProgressBar.setMaximum(hero.getXpToNextLevel());
         xpProgressBar.setValue(hero.getXpBar());
-        xpProgressBar.setString("XP " + hero.getXpBar() + " / " + hero.getXpToNextLevel());
+        xpProgressBar.setString("XP " + hero.getXpBar() + " / " 
+                + hero.getXpToNextLevel());
         
         //update the counter of ultimate and heal
         specialButton.setText("Special (" + hero.getUltimatesLeft() + ")");
@@ -133,6 +137,8 @@ public class BattlePanel extends JPanel {
         nextButton.setVisible(game.hasNextBattle());
         playAgainButton.setVisible(game.canReplayBattle());
         restartButton.setVisible(game.isOver());
+        // the shop is only available once the current battle is won
+        shopButton.setVisible(battle.isWon() && !game.isOver());
     }
 
     // return the name, level, and hp of a Fighter

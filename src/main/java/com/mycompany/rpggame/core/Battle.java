@@ -61,8 +61,9 @@ public class Battle {
         }
 
         if (isWon()) {
-            // Xp Gain System
             log += enemy.getName() + " is defeated, you win!\n";
+            
+            // Xp Gain System
             int xpWon = (Math.max(0, enemy.getLevel() - hero.getLevel()  
                     + 2)) * 25;
             if (enemy instanceof FinalBoss) {
@@ -73,7 +74,12 @@ public class Battle {
                 log += hero.getName() + " reaches level " + hero.getLevel() 
                         + "!\n";
             }
-
+            
+            // Coin Gain System
+            int coinsWon = (int) (enemy.getLevel() / hero.getLevel() 
+                    * 50);
+            log += enemy.getName() + " dropped " + coinsWon + " coins!\n";
+            hero.gainCoins(coinsWon);
         } else if (isLost()) {
             log += hero.getName() + " is defeated, game over\n";
         }
