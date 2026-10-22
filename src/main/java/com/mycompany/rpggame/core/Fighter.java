@@ -21,8 +21,9 @@ public class Fighter {
     private String name;
     private int level;
     private int type;
-    
-    public Fighter(int hp, int maxHp, String name, int attackPoint, 
+    private boolean lastAttackWasCrit = false;
+
+    public Fighter(int hp, int maxHp, String name, int attackPoint,
         int defensePoint, int level, float critDmg, float critRate, int type) {
         this.hp = hp;
         this.maxHp = maxHp;
@@ -55,16 +56,16 @@ public class Fighter {
         return (critRate >= critNeed);
     }
     
-    public float calcCrit() {
-        boolean isCrit = isCrit(critRate);
-        if (isCrit) {
-            return (1 + critDmg);
-        } else {
-            return 1;
-        }
+    protected float calcCrit() {
+        lastAttackWasCrit = isCrit(critRate);
+        return lastAttackWasCrit ? (1 + critDmg) : 1;
+    }
+
+    public boolean wasLastAttackCrit() {
+        return lastAttackWasCrit;
     }
     
-    public float calcTypeMult(int enemyType) {
+    protected float calcTypeMult(int enemyType) {
         return (float) Types.WEAKLIST[enemyType][type];
     }
 
@@ -115,10 +116,6 @@ public class Fighter {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getAttackPoint() {
         return attackPoint;
     }
@@ -145,9 +142,5 @@ public class Fighter {
 
     public int getType() {
         return type;
-    }
-    
-    public void setType(int type) {
-        this.type = type;
     }
 }

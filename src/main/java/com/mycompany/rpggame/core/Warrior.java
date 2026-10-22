@@ -3,15 +3,14 @@ package com.mycompany.rpggame.core;
 public class Warrior extends Hero {
     public Warrior() {
         // Statistics of the warriors lvl 1
-        // Type = 3
-        super(30, 30, "Warrior", 5, 6, 1, (float) 0.5, (float) 0.05, 3);
+        super(30, 30, "Warrior", 7, 5, 1, (float) 0.5, (float) 0.05, Types.THUNDER);
     }
     
-    // normal attack x2
+    // normal attack x2, with type and crit
     @Override
     protected int specialAttack(Fighter target) {
-        int damage = 2 * Math.max(1, getAttackPoint() - target.getDefensePoint());
-        target.takeDamage(damage);
-        return damage;
+        int hit = attack(target);
+        target.takeDamage(hit);
+        return hit * 2;
     }
 }

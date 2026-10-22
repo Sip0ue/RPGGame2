@@ -24,8 +24,7 @@ public class Ennemy extends Fighter {
     protected String attackTurn(Fighter target) {
         int damage = attack(target);
         String log = "";
-        if (damage > Math.max(1, this.getAttackPoint() 
-                - target.getDefensePoint())) {
+        if (wasLastAttackCrit()) {
             log += this.getName() + " crits!\n";
         }
         log += getName() + " attacks for " + damage + " damage";

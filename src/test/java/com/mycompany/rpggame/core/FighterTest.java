@@ -1,6 +1,8 @@
 package com.mycompany.rpggame.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +12,7 @@ class FighterTest {
     private static final float ALWAYS_CRIT = 1f;
 
     private Fighter createFighter(int hp, int attack, int defense) {
-        return new Fighter(hp, 30, "Victim", attack, defense, 1, 0.5f, NEVER_CRIT);
+        return new Fighter(hp, 30, "Victim", attack, defense, 1, 0.5f, NEVER_CRIT, 0);
     }
 
     @Test
@@ -117,7 +119,7 @@ class FighterTest {
 
     @Test
     void critTest1() {
-        Fighter attacker = new Fighter(30, 30, "Attacker", 8, 2, 1, 0.5f, ALWAYS_CRIT);
+        Fighter attacker = new Fighter(30, 30, "Attacker", 8, 2, 1, 0.5f, ALWAYS_CRIT, 0);
         Fighter target = createFighter(30, 5, 3);
 
         int damage = attacker.attack(target);

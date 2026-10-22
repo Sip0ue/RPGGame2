@@ -1,13 +1,13 @@
 package com.mycompany.rpggame.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 class BeastTest {
 
     private Fighter createTarget(int defense) {
-        return new Fighter(100, 100, "Victim", 1, defense, 1, 0f, 0f);
+        return new Fighter(100, 100, "Victim", 1, defense, 1, 0f, 0f, 0);
     }
 
     @Test

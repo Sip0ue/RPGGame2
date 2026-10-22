@@ -10,10 +10,10 @@ public class Game {
     public Game(Hero hero) {
         this.hero = hero;
         this.enemies = new Ennemy[] {
-            new Ennemy("Goblin", 1, 1),
-            new Ennemy("Orc", 2, 2),
-            new Ennemy("Troll", 3, 3),
-            new FinalBoss("Dragon", 4, 0) // Type = 0
+            new Ennemy("Goblin", 1, Types.FIRE),
+            new Ennemy("Orc", 2, Types.WATER),
+            new Ennemy("Troll", 3, Types.THUNDER),
+            new FinalBoss("Dragon", 4, Types.NORMAL)
         };
         this.currentIndex = 0;
         this.currentBattle = new Battle(hero, enemies[0]);

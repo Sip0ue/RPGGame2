@@ -72,7 +72,4 @@ public abstract class Hero extends Fighter {
         return xpBar;
     }
     
-    public void setXpBar(int xpBar) {
-        this.xpBar = xpBar;
-    }
 }

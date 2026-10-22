@@ -1,6 +1,8 @@
 package com.mycompany.rpggame.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +15,7 @@ class BattleTest {
 
     @Test
     void winTest1() {
-        Battle battle = createAlmostWonBattle(new Archer(), new Ennemy("Goblin", 1));
+        Battle battle = createAlmostWonBattle(new Archer(), new Ennemy("Goblin", 1, 0));
 
         String log = battle.specialAttack();
 
@@ -25,7 +27,7 @@ class BattleTest {
     @Test
     void winTest2() {
         Archer archer = new Archer();
-        Battle battle = createAlmostWonBattle(archer, new Ennemy("Goblin", 1));
+        Battle battle = createAlmostWonBattle(archer, new Ennemy("Goblin", 1, 0));
 
         String log = battle.specialAttack();
 
@@ -40,11 +42,12 @@ class BattleTest {
     void winTest3() {
         Archer archer = new Archer();
         archer.setLevel(3);
-        Battle battle = createAlmostWonBattle(archer, new Ennemy("Goblin", 1));
+        Battle battle = createAlmostWonBattle(archer, new Ennemy("Goblin", 1, 0));
 
         String log = battle.specialAttack();
 
-        assertTrue(log.contains("gains 0 XP"));
+        // XP minimum is 25 (max(1, 1-3+2)*25 = 25)
+        assertTrue(log.contains("gains 25 XP"));
         assertEquals(0, archer.getXpBar());
         assertEquals(3, archer.getLevel());
     }
@@ -52,7 +55,7 @@ class BattleTest {
     @Test
     void winTest4() {
         Archer archer = new Archer();
-        Battle battle = createAlmostWonBattle(archer, new FinalBoss("Dragon", 4));
+        Battle battle = createAlmostWonBattle(archer, new FinalBoss("Dragon", 4, 0));
 
         String log = battle.specialAttack();
 
@@ -64,7 +67,7 @@ class BattleTest {
     void ennemyTurnTest1() {
         Archer archer = new Archer();
         archer.setHp(5);
-        Battle battle = new Battle(archer, new Ennemy("Goblin", 1));
+        Battle battle = new Battle(archer, new Ennemy("Goblin", 1, 0));
 
         String log = battle.heal();
 
@@ -75,7 +78,7 @@ class BattleTest {
     @Test
     void winTest5() {
         Archer archer = new Archer();
-        Battle battle = createAlmostWonBattle(archer, new Ennemy("Goblin", 1));
+        Battle battle = createAlmostWonBattle(archer, new Ennemy("Goblin", 1, 0));
         battle.specialAttack();
         int healsBefore = archer.getHealsLeft();
         int ultimatesBefore = archer.getUltimatesLeft();
@@ -90,7 +93,7 @@ class BattleTest {
     @Test
     void loseTest1() {
         Archer archer = new Archer();
-        Battle battle = new Battle(archer, new Ennemy("Goblin", 1));
+        Battle battle = new Battle(archer, new Ennemy("Goblin", 1, 0));
 
         archer.setHp(0);
 
@@ -106,7 +109,7 @@ class BattleTest {
         for (int i = 0; i < Fighter.MAX_HEAL; i++) {
             archer.heal();
         }
-        Battle battle = new Battle(archer, new Ennemy("Goblin", 1));
+        Battle battle = new Battle(archer, new Ennemy("Goblin", 1, 0));
 
         assertEquals("No heals left\n", battle.heal());
     }
@@ -114,11 +117,11 @@ class BattleTest {
     @Test
     void ultTest1() {
         Archer archer = new Archer();
-        Ennemy dummy = new Ennemy("Dummy", 10);
+        Ennemy dummy = new Ennemy("Dummy", 10, 0);
         for (int i = 0; i < Hero.MAX_ULTIMATE; i++) {
             archer.useSpecialAttack(dummy);
         }
-        Battle battle = new Battle(archer, new Ennemy("Goblin", 1));
+        Battle battle = new Battle(archer, new Ennemy("Goblin", 1, 0));
 
         assertEquals("No special attacks left\n", battle.specialAttack());
     }

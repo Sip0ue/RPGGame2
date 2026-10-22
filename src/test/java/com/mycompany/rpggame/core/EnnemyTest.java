@@ -1,18 +1,20 @@
 package com.mycompany.rpggame.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class EnnemyTest {
 
     private Fighter createTarget() {
-        return new Fighter(100, 100, "Victim", 1, 2, 1, 0f, 0f);
+        return new Fighter(100, 100, "Victim", 1, 2, 1, 0f, 0f, 0);
     }
 
     @Test
     void levelTest1() {
-        Ennemy goblin = new Ennemy("Goblin", 1);
+        Ennemy goblin = new Ennemy("Goblin", 1, 0);
 
         assertEquals(1, goblin.getLevel());
         assertEquals(24, goblin.getHp());
@@ -23,7 +25,7 @@ class EnnemyTest {
 
     @Test
     void levelTest2() {
-        Ennemy orc = new Ennemy("Orc", 2);
+        Ennemy orc = new Ennemy("Orc", 2, 0);
 
         assertEquals(30, orc.getMaxHp());
         assertEquals(8, orc.getAttackPoint());
@@ -32,7 +34,7 @@ class EnnemyTest {
 
     @Test
     void lowHpTest1() {
-        Ennemy goblin = new Ennemy("Goblin", 1);
+        Ennemy goblin = new Ennemy("Goblin", 1, 0);
 
         goblin.setHp(8); // 8 / 24 = 33%, the limit is 35%
 
@@ -41,7 +43,7 @@ class EnnemyTest {
 
     @Test
     void lowHpTest2() {
-        Ennemy goblin = new Ennemy("Goblin", 1);
+        Ennemy goblin = new Ennemy("Goblin", 1, 0);
 
         goblin.setHp(9); // 9 / 24 = 37.5%, the limit is 35%
 
@@ -50,7 +52,7 @@ class EnnemyTest {
 
     @Test
     void healTest1() {
-        Ennemy goblin = new Ennemy("Goblin", 1);
+        Ennemy goblin = new Ennemy("Goblin", 1, 0);
         goblin.setHp(8);
         Fighter target = createTarget();
 
@@ -64,7 +66,7 @@ class EnnemyTest {
 
     @Test
     void attackTest1() {
-        Ennemy goblin = new Ennemy("Goblin", 1);
+        Ennemy goblin = new Ennemy("Goblin", 1, 0);
         Fighter target = createTarget();
 
         String log = goblin.playTurn(target);
@@ -76,7 +78,7 @@ class EnnemyTest {
 
     @Test
     void attackTest2() {
-        Ennemy goblin = new Ennemy("Goblin", 1);
+        Ennemy goblin = new Ennemy("Goblin", 1, 0);
         for (int i = 0; i < Fighter.MAX_HEAL; i++) {
             goblin.heal();
         }

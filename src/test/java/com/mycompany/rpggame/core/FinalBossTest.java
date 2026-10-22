@@ -1,18 +1,19 @@
 package com.mycompany.rpggame.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class FinalBossTest {
 
     private Fighter createTarget(int defense) {
-        return new Fighter(100, 100, "Victim", 1, defense, 1, 0f, 0f);
+        return new Fighter(100, 100, "Victim", 1, defense, 1, 0f, 0f, 0);
     }
 
     @Test
     void statsTest1() {
-        FinalBoss dragon = new FinalBoss("Dragon", 4);
+        FinalBoss dragon = new FinalBoss("Dragon", 4, 0);
 
         // hp 18 + 6 * 4, attack 4 + 2 * 4, defense 2 + 4
         assertEquals(42, dragon.getMaxHp());
@@ -23,7 +24,7 @@ class FinalBossTest {
 
     @Test
     void specialTest1() {
-        FinalBoss dragon = new FinalBoss("Dragon", 4);
+        FinalBoss dragon = new FinalBoss("Dragon", 4, 0);
         Fighter target = createTarget(6);
 
         int damage = dragon.useUltimate(target);
@@ -35,7 +36,7 @@ class FinalBossTest {
 
     @Test
     void specialTest2() {
-        FinalBoss dragon = new FinalBoss("Dragon", 4);
+        FinalBoss dragon = new FinalBoss("Dragon", 4, 0);
         Fighter target = createTarget(50);
 
         int damage = dragon.useUltimate(target);
@@ -46,7 +47,7 @@ class FinalBossTest {
 
     @Test
     void healTest1() {
-        FinalBoss dragon = new FinalBoss("Dragon", 4);
+        FinalBoss dragon = new FinalBoss("Dragon", 4, 0);
         dragon.setHp(10);
         Fighter target = createTarget(6);
 

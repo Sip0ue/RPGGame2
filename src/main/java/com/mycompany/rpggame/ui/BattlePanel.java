@@ -4,8 +4,8 @@ import com.mycompany.rpggame.core.Battle;
 import com.mycompany.rpggame.core.Game;
 import com.mycompany.rpggame.core.Hero;
 import java.awt.*;
-import javax.swing.*;
 import java.net.URL;
+import javax.swing.*;
 
 
 public class BattlePanel extends JPanel {
@@ -115,7 +115,7 @@ public class BattlePanel extends JPanel {
         messageArea.setText(game.getHero().getName() + " recovers all HP\n" + announceBattle());
         refresh();
     }
-    
+
     // heal the Hero and fight the same enemy again
     private void startReplayBattle() {
         game.replayBattle();

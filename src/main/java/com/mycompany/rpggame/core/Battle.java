@@ -16,8 +16,7 @@ public class Battle {
         }
         int damage = hero.attack(enemy);
         String log = "";
-        if (damage > Math.max(1, hero.getAttackPoint() 
-                - enemy.getDefensePoint())) {
+        if (hero.wasLastAttackCrit()) {
             log += hero.getName() + " crits!\n";
         }
         log += hero.getName() + " attacks for " + damage + " damage\n";
@@ -34,7 +33,11 @@ public class Battle {
             return "No special attacks left\n";
         }
         int damage = hero.useSpecialAttack(enemy);
-        String log = hero.getName() + " uses a special attack for " + damage + " damage\n";
+        String log = "";
+        if (hero.wasLastAttackCrit()) {
+            log += hero.getName() + " crits!\n";
+        }
+        log += hero.getName() + " uses a special attack for " + damage + " damage\n";
         log += endTurn();
         return log;
     }
@@ -63,7 +66,7 @@ public class Battle {
         if (isWon()) {
             // Xp Gain System
             log += enemy.getName() + " is defeated, you win!\n";
-            int xpWon = (Math.max(0, enemy.getLevel() - hero.getLevel()  
+            int xpWon = (Math.max(1, enemy.getLevel() - hero.getLevel()
                     + 2)) * 25;
             if (enemy instanceof FinalBoss) {
                 xpWon += 50;

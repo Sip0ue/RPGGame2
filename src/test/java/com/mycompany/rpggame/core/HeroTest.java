@@ -1,6 +1,8 @@
 package com.mycompany.rpggame.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -45,16 +47,17 @@ class HeroTest {
         
         hero.gainXp(50);
         
+        // Warrior starts ATK=7, DEF=5; levelUp adds +2 ATK, +1 DEF
         assertEquals(34, hero.getHp());
-        assertEquals(7, hero.getDefensePoint());
-        assertEquals(7, hero.getAttackPoint());
+        assertEquals(6, hero.getDefensePoint());
+        assertEquals(9, hero.getAttackPoint());
 
     }
 
     @Test
     void noSpecialAttackLeftAfterThreeUses() {
         Hero hero = new Warrior();
-        Ennemy target = new Ennemy("Goblin", 10);
+        Ennemy target = new Ennemy("Goblin", 10, 0);
 
         for (int i = 0; i < Hero.MAX_ULTIMATE; i++) {
             hero.useSpecialAttack(target);

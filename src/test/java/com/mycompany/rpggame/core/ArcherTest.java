@@ -1,13 +1,14 @@
 package com.mycompany.rpggame.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class ArcherTest {
 
     private Fighter createTarget(int defense) {
-        return new Fighter(100, 100, "Victim", 1, defense, 1, 0f, 0f);
+        return new Fighter(100, 100, "Victim", 1, defense, 1, 0f, 0f, 0);
     }
 
     @Test
@@ -17,8 +18,9 @@ class ArcherTest {
 
         int damage = archer.useSpecialAttack(target);
 
-        assertEquals(9, damage);
-        assertEquals(91, target.getHp());
+        // ignores DEF, no type modifier (Normal target); crit doubles damage
+        assertTrue(damage == 9 || damage == 18);
+        assertEquals(100 - damage, target.getHp());
     }
 
     @Test
@@ -29,6 +31,7 @@ class ArcherTest {
         archer.levelUp();
         int damage = archer.useSpecialAttack(target);
 
-        assertEquals(11, damage);
+        // ATK=11 after levelUp; crit doubles damage
+        assertTrue(damage == 11 || damage == 22);
     }
 }

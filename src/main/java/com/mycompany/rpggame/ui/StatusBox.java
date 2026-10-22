@@ -2,6 +2,7 @@ package com.mycompany.rpggame.ui;
 
 import com.mycompany.rpggame.core.Fighter;
 import com.mycompany.rpggame.core.Hero;
+import com.mycompany.rpggame.core.Types;
 import java.awt.*;
 import javax.swing.*;
 
@@ -50,7 +51,9 @@ public class StatusBox extends JPanel {
 
     // Update name, level and hp bar
     public void update(Fighter fighter) {
-        nameLabel.setText(fighter.getName());
+        nameLabel.setText("<html>" + fighter.getName()
+                + " <font color='" + Types.getColor(fighter.getType()) + "'>["
+                + Types.getName(fighter.getType()) + "]</font></html>");
         levelLabel.setText("Lv." + fighter.getLevel());
         hpBar.setMaximum(fighter.getMaxHp());
         hpBar.setValue(fighter.getHp());
