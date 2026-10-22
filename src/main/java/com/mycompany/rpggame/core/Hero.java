@@ -5,7 +5,9 @@ public abstract class Hero extends Fighter {
     // About ultimate attack
     public static final int MAX_ULTIMATE = 3;
     private int ultimatesLeft;
+    // About Collectables
     private int xpBar;
+    private int coins;
     
     public Hero(int hp, int maxHp, String name, int attackPoint,
             int defensePoint, int level, float critDmg, float critRate, 
@@ -33,7 +35,10 @@ public abstract class Hero extends Fighter {
         }
         return leveledUp;
     }
-
+    
+    public void gainCoins(int amount) {
+        coins += amount;
+    }
 
     // Up the statistics when a character level up (numbers have been modified
     //to have a balance game
@@ -64,8 +69,28 @@ public abstract class Hero extends Fighter {
     
     protected abstract int specialAttack(Fighter target);
     
+    public int getCoins() {
+        return coins;
+    }
+    
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+    
+    public float getCritRate() {
+        return this.critRate;
+    }
+    
+    public void setCritRate(float critRate) {
+        this.critRate = critRate;
+    }
+    
     public int getUltimatesLeft() {
         return ultimatesLeft;
+    }
+    
+    public void setUltimatesLeft(int ultimatesLeft) {
+        this.ultimatesLeft = Math.min(ultimatesLeft, MAX_ULTIMATE);
     }
     
     public int getXpBar() {

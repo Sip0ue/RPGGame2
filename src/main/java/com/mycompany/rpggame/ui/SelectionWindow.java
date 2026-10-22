@@ -10,10 +10,12 @@ import java.awt.*;
 import java.net.URL;
 import javax.swing.*;
 
-public class GameWindow extends JFrame {
-
+public class SelectionWindow extends JFrame {
+    private Game game;
+    private BattlePanel battlePanel;
     // Creation of the first window, the home menu
-    public GameWindow() {
+    
+    public SelectionWindow() {
         super("BenLeViRPG");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -85,8 +87,27 @@ public class GameWindow extends JFrame {
 
     // Starting the game, switching to the battle screen
     private void startGame(Hero hero) {
-        setContentPane(new BattlePanel(this, new Game(hero)));
+        game = new Game(hero);
+        battlePanel = new BattlePanel(this, game);
+        showScreen(battlePanel);
         // Mandatory when we change a screen
         revalidate();
+    }
+    
+    //Open the shop in this window, replacing the battle screen
+    public void showShop() {
+        showScreen(new ShopPanel(this, game.getHero()));
+    }
+    
+    //Come back from the shop to the same battle screen
+    public void showBattle(){
+        battlePanel.refresh();
+        showScreen(battlePanel);
+    }
+    
+    private void showScreen(JPanel screen) {
+        setContentPane(screen);
+        revalidate();
+        repaint();
     }
 }
