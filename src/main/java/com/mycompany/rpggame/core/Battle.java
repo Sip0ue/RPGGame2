@@ -77,7 +77,7 @@ public class Battle {
             }
             
             // Coin Gain System
-            int coinsWon = (int) Math.max(25,((float) enemy.getLevel()
+            int coinsWon = (int) Math.max(25, ((float) enemy.getLevel()
                     / (float) hero.getLevel()
                     * 50));
             log += enemy.getName() + " dropped " + coinsWon + " coins!\n";
