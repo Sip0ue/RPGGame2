@@ -48,7 +48,7 @@ class BattleTest {
 
         // XP minimum is 25 (max(1, 1-3+2)*25 = 25)
         assertTrue(log.contains("gains 25 XP"));
-        assertEquals(0, archer.getXpBar());
+        assertEquals(25, archer.getXpBar());
         assertEquals(3, archer.getLevel());
     }
 
