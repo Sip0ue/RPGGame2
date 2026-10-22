@@ -4,13 +4,13 @@ import com.mycompany.rpggame.core.Battle;
 import com.mycompany.rpggame.core.Game;
 import com.mycompany.rpggame.core.Hero;
 import java.awt.*;
-import javax.swing.*;
 import java.net.URL;
+import javax.swing.*;
 
 
 public class BattlePanel extends JPanel {
     // All the elements that are present in the battle screen
-    private final GameWindow window;
+    private final SelectionWindow selectionWindow;
     private final Game game;
     private final JTextArea messageArea = new JTextArea();
     private final JLabel heroSprite = new JLabel("", SwingConstants.CENTER);
@@ -22,16 +22,17 @@ public class BattlePanel extends JPanel {
     private final JButton nextButton = new JButton("Next battle");
     private final JButton playAgainButton = new JButton("Play again");
     private final JButton restartButton = new JButton("Restart");
+    private final JButton shopButton = new JButton("Shop");
     private final StatusBox heroBox = new StatusBox(true);
     private final StatusBox enemyBox = new StatusBox(false);
-    
+
     private static final int IMAGE_SIZE = 150;
 
 
-    public BattlePanel(GameWindow window, Game game) {
+    public BattlePanel(SelectionWindow selectionWindow, Game game) {
         // Init the screen
         super(new BorderLayout(10, 10));
-        this.window = window;
+        this.selectionWindow = selectionWindow;
         this.game = game;
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -50,10 +51,11 @@ public class BattlePanel extends JPanel {
         messageArea.setWrapStyleWord(true);
         bottomPanel.add(messageArea);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(4, 2, 5, 5));
         buttonPanel.add(attackButton);
         buttonPanel.add(specialButton);
         buttonPanel.add(healButton);
+        buttonPanel.add(shopButton);
         buttonPanel.add(nextButton);
         buttonPanel.add(playAgainButton);
         buttonPanel.add(restartButton);
@@ -68,7 +70,8 @@ public class BattlePanel extends JPanel {
         healButton.addActionListener(e -> showLog(getBattle().heal()));
         nextButton.addActionListener(e -> startNextBattle());
         playAgainButton.addActionListener(e -> startReplayBattle());
-        restartButton.addActionListener(e -> window.showHeroSelection());
+        restartButton.addActionListener(e -> selectionWindow.showHeroSelection());
+        shopButton.addActionListener(e -> selectionWindow.showShop());
 
         messageArea.setText(announceBattle());
         refresh();
@@ -77,7 +80,7 @@ public class BattlePanel extends JPanel {
     private Battle getBattle() {
         return game.getCurrentBattle();
     }
-   
+
     // Show the image of a fighter, or its name if there is no image yet
     private void showImage(JLabel image, String name) {
         URL url = getClass().getResource("/character/" + name + ".png");
@@ -115,7 +118,7 @@ public class BattlePanel extends JPanel {
         messageArea.setText(game.getHero().getName() + " recovers all HP\n" + announceBattle());
         refresh();
     }
-    
+
     // heal the Hero and fight the same enemy again
     private void startReplayBattle() {
         game.replayBattle();
@@ -133,7 +136,7 @@ public class BattlePanel extends JPanel {
     }
 
     // Refresh the state of the game after each action
-    private void refresh() {
+    public void refresh() {
         // update the state of the characters
         Battle battle = getBattle();
         Hero hero = battle.getHero();
@@ -144,7 +147,6 @@ public class BattlePanel extends JPanel {
         // show the image of each fighter
         showImage(heroSprite, hero.getName());
         showImage(enemySprite, battle.getEnemy().getName());
-
 
         //update the counter of ultimate and heal
         specialButton.setText("Special (" + hero.getUltimatesLeft() + ")");
@@ -158,5 +160,6 @@ public class BattlePanel extends JPanel {
         nextButton.setVisible(game.hasNextBattle());
         playAgainButton.setVisible(game.canReplayBattle());
         restartButton.setVisible(game.isOver());
+        shopButton.setVisible(battle.isWon() && !game.isOver());
     }
 }

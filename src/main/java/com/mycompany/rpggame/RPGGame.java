@@ -1,6 +1,6 @@
 package com.mycompany.rpggame;
 
-import com.mycompany.rpggame.ui.GameWindow;
+import com.mycompany.rpggame.ui.SelectionWindow;
 import javax.swing.SwingUtilities;
 
 public class RPGGame {
@@ -10,7 +10,7 @@ public class RPGGame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new GameWindow();
+                new SelectionWindow();
             }
         });
     }
