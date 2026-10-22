@@ -100,7 +100,7 @@ public class SelectionWindow extends JFrame {
     }
     
     //Come back from the shop to the same battle screen
-    public void showBattle(){
+    public void showBattle() {
         battlePanel.refresh();
         showScreen(battlePanel);
     }

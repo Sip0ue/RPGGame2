@@ -2,9 +2,8 @@ package com.mycompany.rpggame.ui;
 
 import com.mycompany.rpggame.core.Hero;
 import com.mycompany.rpggame.core.Shop;
-import javax.swing.*;
 import java.awt.*;
-
+import javax.swing.*;
 
 public class ShopPanel extends JPanel {
     private final Hero hero;
